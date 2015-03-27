@@ -474,7 +474,7 @@
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(63, 13);
             this.lblVersion.TabIndex = 2;
-            this.lblVersion.Text = "Version: 1.0";
+            this.lblVersion.Text = "Version: 2.0";
             // 
             // pictureBox1
             // 
