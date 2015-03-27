@@ -34,9 +34,9 @@
             this.tabMain = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panelLog = new System.Windows.Forms.Panel();
+            this.rtxtLog = new System.Windows.Forms.RichTextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.progessBar = new System.Windows.Forms.ToolStripProgressBar();
-            this.rtxtLog = new System.Windows.Forms.RichTextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnClearLog = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
@@ -141,6 +141,15 @@
             this.panelLog.Size = new System.Drawing.Size(870, 278);
             this.panelLog.TabIndex = 8;
             // 
+            // rtxtLog
+            // 
+            this.rtxtLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtxtLog.Location = new System.Drawing.Point(0, 0);
+            this.rtxtLog.Name = "rtxtLog";
+            this.rtxtLog.Size = new System.Drawing.Size(870, 256);
+            this.rtxtLog.TabIndex = 2;
+            this.rtxtLog.Text = "";
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -157,17 +166,9 @@
             // 
             this.progessBar.ForeColor = System.Drawing.Color.LightSeaGreen;
             this.progessBar.Name = "progessBar";
+            this.progessBar.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
             this.progessBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.progessBar.Size = new System.Drawing.Size(160, 16);
-            // 
-            // rtxtLog
-            // 
-            this.rtxtLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtxtLog.Location = new System.Drawing.Point(0, 0);
-            this.rtxtLog.Name = "rtxtLog";
-            this.rtxtLog.Size = new System.Drawing.Size(870, 256);
-            this.rtxtLog.TabIndex = 2;
-            this.rtxtLog.Text = "";
+            this.progessBar.Size = new System.Drawing.Size(800, 16);
             // 
             // panel3
             // 

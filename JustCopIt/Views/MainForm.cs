@@ -21,10 +21,10 @@ namespace JustCopIt.Views
         #region Declarations
 
         private readonly UILog _uiLogging;
-        private  Dictionary<SiteType, bool> _dictStopTracking;
+        private Dictionary<SiteType, bool> _dictStopTracking;
         private readonly Dictionary<SiteType, TabPage> _dictTabViewCart;
         private readonly Dictionary<SiteType, CartView> _dictCartViewControl;
-        
+
         private readonly Color SuccessTextBoxColor = Color.LightGreen;
         private readonly Color ErrorTextBoxColor = Color.Red;
         bool isActivated;
@@ -36,14 +36,14 @@ namespace JustCopIt.Views
         {
             InitializeComponent();
             _uiLogging = new UILog(rtxtLog);
-             _dictTabViewCart = new Dictionary<SiteType, TabPage>
+            _dictTabViewCart = new Dictionary<SiteType, TabPage>
             {
                 {SiteType.ChampsSports, tabChampsSports},
                 {SiteType.Eastbay, tabEastbay},
                 {SiteType.Footaction, tabFootaction},
                 {SiteType.FootLocker, tabFootLocker}
             };
-             _dictCartViewControl = new Dictionary<SiteType, CartView>
+            _dictCartViewControl = new Dictionary<SiteType, CartView>
             {
                 {SiteType.ChampsSports,cartViewChampsSports},
                 {SiteType.Eastbay, cartViewEastbay},
@@ -75,14 +75,14 @@ namespace JustCopIt.Views
                               gr == IsGenuineResult.GenuineFeaturesChanged ||
 
                               // an internet error means the user is activated but
-                              // TurboActivate failed to contact the LimeLM servers
+                    // TurboActivate failed to contact the LimeLM servers
                               gr == IsGenuineResult.InternetError;
 
                 if (gr == IsGenuineResult.InternetError)
                 {
                     //TODO: give the user the option to retry the genuine checking immediately
                     //      For example a dialog box. In the dialog call IsGenuine() to retry immediately
-                    MessageBox.Show(@"Internet error" , Constants.ApplicationTitle);
+                    MessageBox.Show(@"Internet error", Constants.ApplicationTitle);
                     isActivated = false;
                 }
             }
@@ -103,7 +103,7 @@ namespace JustCopIt.Views
         {
             return DataUtil.IsNullOrEmptyOrWhiteSpace(url) || url.StartsWith(host);
         }
-      
+
         private bool ValidateSingleSite(SiteType type)
         {
             var isValidUrl = false;
@@ -111,19 +111,19 @@ namespace JustCopIt.Views
             switch (type)
             {
                 case SiteType.ChampsSports:
-                    isValidUrl= ValidateUrl(txtChampUrl.Text, MockData.ChampsSportsHost);
-                    isValidSize = !string.IsNullOrEmpty(DataUtil.StringForNull( cboChampSize.SelectedValue));
+                    isValidUrl = ValidateUrl(txtChampUrl.Text, MockData.ChampsSportsHost);
+                    isValidSize = !string.IsNullOrEmpty(DataUtil.StringForNull(cboChampSize.SelectedValue));
                     break;
                 case SiteType.Eastbay:
-                    isValidUrl= ValidateUrl(txtEastbayUrl.Text,MockData.EastbayViewHost);
+                    isValidUrl = ValidateUrl(txtEastbayUrl.Text, MockData.EastbayViewHost);
                     isValidSize = !string.IsNullOrEmpty(DataUtil.StringForNull(cboEastbaySize.SelectedValue));
                     break;
                 case SiteType.Footaction:
-                    isValidUrl= ValidateUrl(txtFootactionUrl.Text, MockData.FootactioHost);
+                    isValidUrl = ValidateUrl(txtFootactionUrl.Text, MockData.FootactioHost);
                     isValidSize = !string.IsNullOrEmpty(DataUtil.StringForNull(cboFootactionSize.SelectedValue));
                     break;
                 case SiteType.FootLocker:
-                    isValidUrl= ValidateUrl(txtFootLockerUrl.Text,MockData.FootLockerHost);
+                    isValidUrl = ValidateUrl(txtFootLockerUrl.Text, MockData.FootLockerHost);
                     isValidSize = !string.IsNullOrEmpty(DataUtil.StringForNull(cboFootLockerSize.SelectedValue));
                     break;
             }
@@ -150,7 +150,7 @@ namespace JustCopIt.Views
             switch (type)
             {
                 case SiteType.ChampsSports:
-                    SetUrlError(txtChampUrl,isErrorUrl);
+                    SetUrlError(txtChampUrl, isErrorUrl);
                     SetSizeError(lblChamp, IsErrorSize);
                     break;
                 case SiteType.Eastbay:
@@ -172,7 +172,7 @@ namespace JustCopIt.Views
         {
             if (DataUtil.IsAllEmpty(txtChampUrl.Text, txtEastbayUrl.Text, txtFootactionUrl.Text, txtFootLockerUrl.Text))
                 return false;
-          
+
             var isValidChampsSports = ValidateSingleSite(SiteType.ChampsSports);
             var isValidEastbay = ValidateSingleSite(SiteType.Eastbay);
             var isValidFootaction = ValidateSingleSite(SiteType.Footaction);
@@ -234,7 +234,7 @@ namespace JustCopIt.Views
         #endregion
 
         #region Control Status
-        
+
         private void SetDefaultStatus()
         {
             btnStart.Enabled = true;
@@ -255,13 +255,12 @@ namespace JustCopIt.Views
             txtFootactionUrl.ForeColor = DefaultForeColor;
             txtFootLockerUrl.ForeColor = DefaultForeColor;
 
-           // UpdateProgessBarValue(0);
+            // UpdateProgessBarValue(0);
 
             txtChampUrl.Focus();
             //invisible tab
             ShowHideMultiTabPages(false, tabChampsSports, tabEastbay, tabFootaction, tabFootLocker);
             SetTestUrl();
-            progessBar.Style=ProgressBarStyle.Continuous;
         }
 
         private void ShowHideTabPage(bool isVisible, TabPage tab)
@@ -300,8 +299,8 @@ namespace JustCopIt.Views
                 return null;
             var dict = new Dictionary<SiteType, SiteModel>
             {
-                {SiteType.ChampsSports, new SiteModel(SiteType.ChampsSports,false,txtChampUrl.Text,DataUtil.StringForNull(cboChampSize.SelectedValue))},
-                {SiteType.Eastbay, new SiteModel(SiteType.Eastbay,false,txtEastbayUrl.Text,DataUtil.StringForNull(cboEastbaySize.SelectedValue))},
+                {SiteType.ChampsSports, new SiteModel(SiteType.ChampsSports,false,ExtractValidUrl(txtChampUrl.Text),DataUtil.StringForNull(cboChampSize.SelectedValue))},
+                {SiteType.Eastbay, new SiteModel(SiteType.Eastbay,false,ExtractValidUrl(txtEastbayUrl.Text),DataUtil.StringForNull(cboEastbaySize.SelectedValue))},
                 {SiteType.Footaction, new SiteModel(SiteType.Footaction,false,txtFootactionUrl.Text,DataUtil.StringForNull(cboFootactionSize.SelectedValue))},
                 {SiteType.FootLocker, new SiteModel(SiteType.FootLocker,false,txtFootLockerUrl.Text,DataUtil.StringForNull(cboFootLockerSize.SelectedValue))}
             };
@@ -312,16 +311,29 @@ namespace JustCopIt.Views
             return dict;
         }
 
+        private string ExtractValidUrl(string inputUrl)
+        {
+            if (!string.IsNullOrEmpty(inputUrl))
+            {
+
+                return inputUrl.Substring(0, inputUrl.IndexOf("?"));
+            }
+            else 
+            { 
+                return inputUrl; 
+            }
+        }
+
         private void StartProject()
         {
-            
+
             var dict = GetAvailableSites();
             if (dict == null || dict.Count == 0)
             {
                 MessageBox.Show(@"Please input Urls.", Constants.ApplicationTitle);
                 return;
             }
-            if (dict.Any(e =>  !e.Value.IsValid))
+            if (dict.Any(e => !e.Value.IsValid))
             {
                 var count = dict.Count(e => !e.Value.IsValid);
                 MessageBox.Show(
@@ -339,7 +351,7 @@ namespace JustCopIt.Views
             txtEastbayUrl.BackColor = DefaultBackColor;
             txtFootactionUrl.BackColor = DefaultBackColor;
             txtFootLockerUrl.BackColor = DefaultBackColor;
-            
+
             ShowHideMultiTabPages(false, tabChampsSports, tabEastbay, tabFootaction, tabFootLocker);
             _dictStopTracking = new Dictionary<SiteType, bool>();
 
@@ -364,7 +376,7 @@ namespace JustCopIt.Views
                     }
                 }
             }
-            catch (UnauthorizedAccessException )
+            catch (UnauthorizedAccessException)
             {
                 success = false;
                 _uiLogging.Write(string.Format("Cannot deleted {0} cookies - required permission", page.Type));
@@ -397,7 +409,6 @@ namespace JustCopIt.Views
                     if (site.Value != null && site.Value.IsPageModel())
                     {
                         _dictStopTracking.Add(site.Key, false);
-                        progessBar.Style=ProgressBarStyle.Marquee;
                         DeleteCookies(cookies, site.Value.PageModel);
                         StartSite(site.Key, site.Value.PageModel);
                     }
@@ -407,12 +418,12 @@ namespace JustCopIt.Views
             {
                 _uiLogging.Write(ex.Message);
             }
-            
+
         }
 
         private void StartSite(SiteType type, PageModel pageModel)
         {
-            var cartView =  _dictCartViewControl.FirstOrDefault(p => p.Key == type).Value;
+            var cartView = _dictCartViewControl.FirstOrDefault(p => p.Key == type).Value;
             switch (type)
             {
                 case SiteType.ChampsSports:
@@ -460,7 +471,7 @@ namespace JustCopIt.Views
             }
             cartView.Restart();
         }
-        
+
 
         private void ShowViewCartResult(SiteType type)
         {
@@ -472,7 +483,6 @@ namespace JustCopIt.Views
         private void Stop()
         {
             timerProcess.Stop();
-            progessBar.Style = ProgressBarStyle.Continuous;
             if (_dictStopTracking != null)
             {
                 _dictStopTracking.Clear();
@@ -503,7 +513,7 @@ namespace JustCopIt.Views
 
         private void ClearLog()
         {
-            rtxtLog.Invoke((MethodInvoker)(() => rtxtLog.Text = string.Empty)); 
+            rtxtLog.Invoke((MethodInvoker)(() => rtxtLog.Text = string.Empty));
         }
         private void Reset()
         {
@@ -548,7 +558,7 @@ namespace JustCopIt.Views
         //    return progressBarAll.Value + progressBarValueRemaining/remain;
         //}
         #endregion
-       
+
         #region Events
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -568,7 +578,7 @@ namespace JustCopIt.Views
         {
             if (!e.TabPage.Enabled)
             {
-               e.Cancel = true;
+                e.Cancel = true;
             }
         }
 
@@ -603,7 +613,7 @@ namespace JustCopIt.Views
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            var result =MessageBox.Show(@"Are you sure you want to exit?",Constants.ApplicationTitle,MessageBoxButtons.YesNo);
+            var result = MessageBox.Show(@"Are you sure you want to exit?", Constants.ApplicationTitle, MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
                 Exit();
@@ -635,7 +645,7 @@ namespace JustCopIt.Views
             ShowViewCartResult(SiteType.FootLocker);
         }
 
-        private void TrackSiteInAllTasks(SiteType type,bool status)
+        private void TrackSiteInAllTasks(SiteType type, bool status)
         {
             if (_dictStopTracking == null || _dictStopTracking.Count <= 0) return;
 
@@ -648,7 +658,6 @@ namespace JustCopIt.Views
             {
                 btnStart.Enabled = true;
                 btnStop.Enabled = false;
-                progessBar.Style = ProgressBarStyle.Continuous;
                 //UpdateProgessBarValue(100);
             }
 
@@ -660,7 +669,7 @@ namespace JustCopIt.Views
             {
                 case SiteType.ChampsSports:
                     btnChampViewCart.Enabled = status;
-                    txtChampUrl.BackColor =status? SuccessTextBoxColor:ErrorTextBoxColor;
+                    txtChampUrl.BackColor = status ? SuccessTextBoxColor : ErrorTextBoxColor;
                     ShowHideTabPage(status, tabChampsSports);
                     break;
                 case SiteType.Eastbay:
@@ -679,8 +688,8 @@ namespace JustCopIt.Views
                     ShowHideTabPage(status, tabFootLocker);
                     break;
             }
-            TrackSiteInAllTasks(type,status);
-            
+            TrackSiteInAllTasks(type, status);
+
         }
 
         private void FootLocker_CartViewCompletedEvent(object sender, bool result)
@@ -689,7 +698,7 @@ namespace JustCopIt.Views
             if (cartView == null) return;
             cartView.CartViewCompletedEvent -= FootLocker_CartViewCompletedEvent;
             const SiteType type = SiteType.FootLocker;
-            TrackTaskDone(type,result);
+            TrackTaskDone(type, result);
             if (!result)
             {
                 cartView.Stop();
@@ -732,7 +741,7 @@ namespace JustCopIt.Views
             TrackTaskDone(type, result);
             if (!result)
             {
-               RestartSite(type);
+                RestartSite(type);
             }
         }
 
@@ -750,10 +759,10 @@ namespace JustCopIt.Views
 
         #endregion
 
-     
-       
 
-      
-        
+
+
+
+
     }
 }

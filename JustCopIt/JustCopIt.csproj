@@ -120,6 +120,9 @@
     <Compile Include="Common\ConfigElement.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\MockData.cs" />
+    <Compile Include="Common\NewProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Enumeration\SiteSourceType.cs" />
     <Compile Include="Framework\Browser\BrowserEmulationHelper.cs" />
     <Compile Include="Framework\Browser\Cookie.cs" />
