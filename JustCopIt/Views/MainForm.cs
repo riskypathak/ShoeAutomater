@@ -313,15 +313,8 @@ namespace JustCopIt.Views
 
         private string ExtractValidUrl(string inputUrl)
         {
-            if (!string.IsNullOrEmpty(inputUrl))
-            {
-
-                return inputUrl.Substring(0, inputUrl.IndexOf("?"));
-            }
-            else 
-            { 
-                return inputUrl; 
-            }
+            if (string.IsNullOrEmpty(inputUrl)) return inputUrl;
+            return inputUrl.Contains("?") ? inputUrl.Substring(0, inputUrl.IndexOf("?", StringComparison.Ordinal)) : inputUrl;
         }
 
         private void StartProject()
@@ -758,9 +751,6 @@ namespace JustCopIt.Views
         }
 
         #endregion
-
-
-
 
 
 
