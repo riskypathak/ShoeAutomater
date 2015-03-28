@@ -256,6 +256,7 @@ namespace JustCopIt.Views
             txtFootLockerUrl.ForeColor = DefaultForeColor;
 
             // UpdateProgessBarValue(0);
+            progressBar.Style = ProgressBarStyle.Continuous;
 
             txtChampUrl.Focus();
             //invisible tab
@@ -401,6 +402,7 @@ namespace JustCopIt.Views
                 {
                     if (site.Value != null && site.Value.IsPageModel())
                     {
+                        progressBar.Style = ProgressBarStyle.Marquee;
                         _dictStopTracking.Add(site.Key, false);
                         DeleteCookies(cookies, site.Value.PageModel);
                         StartSite(site.Key, site.Value.PageModel);
@@ -480,6 +482,7 @@ namespace JustCopIt.Views
             {
                 _dictStopTracking.Clear();
             }
+            progressBar.Style = ProgressBarStyle.Continuous;
             foreach (var cartViewPair in _dictCartViewControl)
             {
                 var cartView = cartViewPair.Value;

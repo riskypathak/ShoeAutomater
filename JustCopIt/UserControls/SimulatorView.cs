@@ -12,7 +12,7 @@ namespace JustCopIt.UserControls
         public event MainDocumentCompletedEventHandler MainDocumentCompletedEvent;
         private  int _waitingTime = Constants.DefaultSimulatorWaitingTime;
         private readonly int _maxTimes = Constants.DefaultSimulatorTickTimes;
-        private const int ExtraTime = 2;
+        private const int ExtraTime = 1;
         private int _iTick;
 
         public SimulatorView()

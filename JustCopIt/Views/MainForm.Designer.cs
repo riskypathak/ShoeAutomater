@@ -33,10 +33,6 @@
             this.tabControlSpider = new System.Windows.Forms.TabControl();
             this.tabMain = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panelLog = new System.Windows.Forms.Panel();
-            this.rtxtLog = new System.Windows.Forms.RichTextBox();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.progessBar = new System.Windows.Forms.ToolStripProgressBar();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnClearLog = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
@@ -72,6 +68,9 @@
             this.tabFootLocker = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.timerProcess = new System.Windows.Forms.Timer(this.components);
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.panelLog = new System.Windows.Forms.Panel();
+            this.rtxtLog = new System.Windows.Forms.RichTextBox();
             this.cartViewChampsSports = new JustCopIt.UserControls.CartView();
             this.cartViewEastbay = new JustCopIt.UserControls.CartView();
             this.cartViewFootaction = new JustCopIt.UserControls.CartView();
@@ -79,8 +78,6 @@
             this.tabControlSpider.SuspendLayout();
             this.tabMain.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panelLog.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -90,6 +87,7 @@
             this.tabFootaction.SuspendLayout();
             this.tabFootLocker.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panelLog.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlSpider
@@ -122,6 +120,7 @@
             // panel4
             // 
             this.panel4.Controls.Add(this.panelLog);
+            this.panel4.Controls.Add(this.progressBar);
             this.panel4.Controls.Add(this.panel3);
             this.panel4.Controls.Add(this.panel2);
             this.panel4.Controls.Add(this.panel6);
@@ -130,45 +129,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(870, 529);
             this.panel4.TabIndex = 6;
-            // 
-            // panelLog
-            // 
-            this.panelLog.Controls.Add(this.rtxtLog);
-            this.panelLog.Controls.Add(this.statusStrip1);
-            this.panelLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelLog.Location = new System.Drawing.Point(0, 251);
-            this.panelLog.Name = "panelLog";
-            this.panelLog.Size = new System.Drawing.Size(870, 278);
-            this.panelLog.TabIndex = 8;
-            // 
-            // rtxtLog
-            // 
-            this.rtxtLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtxtLog.Location = new System.Drawing.Point(0, 0);
-            this.rtxtLog.Name = "rtxtLog";
-            this.rtxtLog.Size = new System.Drawing.Size(870, 256);
-            this.rtxtLog.TabIndex = 2;
-            this.rtxtLog.Text = "";
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.progessBar});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 256);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.statusStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.statusStrip1.Size = new System.Drawing.Size(870, 22);
-            this.statusStrip1.TabIndex = 3;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // progessBar
-            // 
-            this.progessBar.ForeColor = System.Drawing.Color.LightSeaGreen;
-            this.progessBar.Name = "progessBar";
-            this.progessBar.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
-            this.progessBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.progessBar.Size = new System.Drawing.Size(800, 16);
             // 
             // panel3
             // 
@@ -547,6 +507,32 @@
             this.timerProcess.Interval = 1000;
             this.timerProcess.Tick += new System.EventHandler(this.TimerProcess_Tick);
             // 
+            // progressBar
+            // 
+            this.progressBar.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.progressBar.Location = new System.Drawing.Point(0, 509);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(870, 20);
+            this.progressBar.TabIndex = 9;
+            // 
+            // panelLog
+            // 
+            this.panelLog.Controls.Add(this.rtxtLog);
+            this.panelLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelLog.Location = new System.Drawing.Point(0, 251);
+            this.panelLog.Name = "panelLog";
+            this.panelLog.Size = new System.Drawing.Size(870, 258);
+            this.panelLog.TabIndex = 10;
+            // 
+            // rtxtLog
+            // 
+            this.rtxtLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtxtLog.Location = new System.Drawing.Point(0, 0);
+            this.rtxtLog.Name = "rtxtLog";
+            this.rtxtLog.Size = new System.Drawing.Size(870, 258);
+            this.rtxtLog.TabIndex = 2;
+            this.rtxtLog.Text = "";
+            // 
             // cartViewChampsSports
             // 
             this.cartViewChampsSports.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -598,10 +584,6 @@
             this.tabControlSpider.ResumeLayout(false);
             this.tabMain.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            this.panelLog.ResumeLayout(false);
-            this.panelLog.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -613,6 +595,7 @@
             this.tabFootaction.ResumeLayout(false);
             this.tabFootLocker.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            this.panelLog.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -659,12 +642,11 @@
         private System.Windows.Forms.Label lblEastbay;
         private System.Windows.Forms.Label lblChamp;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panelLog;
         private System.Windows.Forms.Timer timerProcess;
         private System.Windows.Forms.Label lblVersion;
+        private System.Windows.Forms.Panel panelLog;
         private System.Windows.Forms.RichTextBox rtxtLog;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripProgressBar progessBar;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
 
