@@ -18,6 +18,13 @@ Name: "{commondesktop}\JustCopIt"; Filename: "{app}\JustCopIt.exe" ; Parameters:
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}";
 
+[Run]
+Filename: {app}\{cm:AppName}.exe; Description: {cm:LaunchProgram,{cm:AppName}}; Flags: nowait postinstall skipifsilent
+
+[CustomMessages]
+AppName=JustCopIt
+LaunchProgram=Start mySoftware after finishing installation
+
 [Files]
 ; Install TurboActivate to {app} so we can access it at uninstall time
 ; Also, notice we're putting the TurboActivate files at the top of the file
