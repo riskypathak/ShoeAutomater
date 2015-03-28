@@ -197,7 +197,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Recources\banner.png" />
-    <None Include="Recources\logo.ico" />
+    <None Include="Recources\logo.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="Note.txt" />
   </ItemGroup>
   <ItemGroup>
