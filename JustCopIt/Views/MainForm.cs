@@ -262,6 +262,7 @@ namespace JustCopIt.Views
             //invisible tab
             ShowHideMultiTabPages(false, tabChampsSports, tabEastbay, tabFootaction, tabFootLocker);
             SetTestUrl();
+
         }
 
         private void ShowHideTabPage(bool isVisible, TabPage tab)
@@ -520,6 +521,7 @@ namespace JustCopIt.Views
                 cartViewPair.Value.Clear();
             }
             Stop();
+            SetSizeSource();
             SetDefaultStatus();
             ClearLog();
         }
@@ -560,8 +562,8 @@ namespace JustCopIt.Views
         private void MainForm_Load(object sender, EventArgs e)
         {
             SetVersion();
-            SetDefaultStatus();
             SetSizeSource();
+            SetDefaultStatus();
             SetCartViewsLog();
             if (!isActivated)
             {
@@ -604,7 +606,11 @@ namespace JustCopIt.Views
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            Reset();
+            var result = MessageBox.Show(@"This will reset all of the bot’s settings and clear all carts?", Constants.ApplicationTitle, MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                Reset();
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
