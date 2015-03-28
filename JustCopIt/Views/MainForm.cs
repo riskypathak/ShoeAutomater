@@ -187,7 +187,7 @@ namespace JustCopIt.Views
 
         private void SetVersion()
         {
-            lblVersion.Text = GetVersion();
+            //lblVersion.Text = GetVersion();
         }
 
         private void SetSizeSource()
