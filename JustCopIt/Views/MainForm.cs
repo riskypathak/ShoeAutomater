@@ -256,7 +256,7 @@ namespace JustCopIt.Views
             txtFootLockerUrl.ForeColor = DefaultForeColor;
 
             // UpdateProgessBarValue(0);
-            progressBar.Style = ProgressBarStyle.Continuous;
+            StartStopProgessBar(false);
 
             txtChampUrl.Focus();
             //invisible tab
@@ -403,7 +403,7 @@ namespace JustCopIt.Views
                 {
                     if (site.Value != null && site.Value.IsPageModel())
                     {
-                        progressBar.Style = ProgressBarStyle.Marquee;
+                        StartStopProgessBar(true);
                         _dictStopTracking.Add(site.Key, false);
                         DeleteCookies(cookies, site.Value.PageModel);
                         StartSite(site.Key, site.Value.PageModel);
@@ -476,14 +476,20 @@ namespace JustCopIt.Views
             tabControlSpider.SelectedTab = tabPage;
         }
 
+        private void StartStopProgessBar(bool isStart )
+        {
+            progressBar.Style = isStart ? ProgressBarStyle.Marquee : ProgressBarStyle.Continuous;
+        }
+
+
         private void Stop()
         {
             timerProcess.Stop();
+            StartStopProgessBar(false);
             if (_dictStopTracking != null)
             {
                 _dictStopTracking.Clear();
             }
-            progressBar.Style = ProgressBarStyle.Continuous;
             foreach (var cartViewPair in _dictCartViewControl)
             {
                 var cartView = cartViewPair.Value;
@@ -604,9 +610,10 @@ namespace JustCopIt.Views
             Stop();
         }
 
+
         private void btnReset_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show(@"This will reset all of the bot’s settings and clear all carts?", Constants.ApplicationTitle, MessageBoxButtons.OKCancel);
+            var result = MessageBox.Show(@"This will reset all of the bot’s settings and clear all carts.", Constants.ApplicationTitle, MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
             {
                 Reset();
@@ -661,6 +668,7 @@ namespace JustCopIt.Views
                 btnStart.Enabled = true;
                 btnStop.Enabled = false;
                 //UpdateProgessBarValue(100);
+                StartStopProgessBar(false);
             }
 
         }
