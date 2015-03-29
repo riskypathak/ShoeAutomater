@@ -10,7 +10,7 @@ namespace JustCopIt.Framework.Simulator
 {
     public class ChampsSportsSimulator : Simulator
     {
-        public ChampsSportsSimulator(UILog spiderLogging,SimulatorView simulatorView, PageModel pageModel)
+        public ChampsSportsSimulator(UILogging spiderLogging,SimulatorView simulatorView, PageModel pageModel)
             : base(spiderLogging,simulatorView, pageModel)
         {
 

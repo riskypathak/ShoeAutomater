@@ -11,7 +11,7 @@ namespace JustCopIt.Framework.Simulator
 {
    public class FootLockerSimulator:Simulator
     {
-       public FootLockerSimulator(UILog spiderLogging, SimulatorView simulatorView, PageModel pageModel)
+       public FootLockerSimulator(UILogging spiderLogging, SimulatorView simulatorView, PageModel pageModel)
            : base(spiderLogging,simulatorView, pageModel)
        {
            

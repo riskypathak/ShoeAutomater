@@ -20,7 +20,7 @@ namespace JustCopIt.Views
     {
         #region Declarations
 
-        private readonly UILog _uiLogging;
+        private readonly UILogging _uiLogging;
         private Dictionary<SiteType, bool> _dictStopTracking;
         private readonly Dictionary<SiteType, TabPage> _dictTabViewCart;
         private readonly Dictionary<SiteType, CartView> _dictCartViewControl;
@@ -37,7 +37,7 @@ namespace JustCopIt.Views
             Constants.IsReset = false;
 
             InitializeComponent();
-            _uiLogging = new UILog(rtxtLog);
+            _uiLogging = new UILogging(rtxtLog);
             _dictTabViewCart = new Dictionary<SiteType, TabPage>
             {
                 {SiteType.ChampsSports, tabChampsSports},
@@ -535,7 +535,7 @@ namespace JustCopIt.Views
         }
         private void Exit()
         {
-            _uiLogging.StopLogging();
+           // _uiLogging.StopLogging();
             Application.Exit();
         }
 
@@ -621,6 +621,7 @@ namespace JustCopIt.Views
                 Reset();
 
                 Constants.IsReset = true;
+                //_uiLogging.StopLogging();
                 this.Dispose();
             }
         }

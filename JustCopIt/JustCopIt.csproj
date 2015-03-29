@@ -136,7 +136,7 @@
     <Compile Include="Framework\Simulator\SimulatorFactory.cs" />
     <Compile Include="Framework\Model\SiteModel.cs" />
     <Compile Include="Common\SizeSource.cs" />
-    <Compile Include="Logging\UILog.cs" />
+    <Compile Include="Logging\UILogging.cs" />
     <Compile Include="TurboActivate.cs" />
     <Compile Include="UserControls\CartView.cs">
       <SubType>UserControl</SubType>

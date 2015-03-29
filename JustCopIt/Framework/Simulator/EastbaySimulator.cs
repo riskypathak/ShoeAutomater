@@ -13,7 +13,7 @@ namespace JustCopIt.Framework.Simulator
 
     public class EastbaySimulator : Simulator
     {
-        public EastbaySimulator(UILog spiderLogging,SimulatorView simulatorView, PageModel pageModel)
+        public EastbaySimulator(UILogging spiderLogging, SimulatorView simulatorView, PageModel pageModel)
             : base(spiderLogging,simulatorView, pageModel)
         {
 

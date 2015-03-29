@@ -17,8 +17,8 @@ namespace JustCopIt.Framework.Simulator
        protected readonly SimulatorView _simulatorView;
        protected readonly PageModel _pageModel;
        protected  string _url;
-       protected UILog _spiderLogging;
-       protected Simulator(UILog spiderLogging, SimulatorView simulatorView, PageModel pageModel)
+       protected UILogging _spiderLogging;
+       protected Simulator(UILogging spiderLogging, SimulatorView simulatorView, PageModel pageModel)
        {
            _simulatorView = simulatorView;
            _pageModel = pageModel;

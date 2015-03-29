@@ -10,7 +10,7 @@ namespace JustCopIt.Framework.Simulator
 {
    public class FootactionSimulator:Simulator
     {
-       public FootactionSimulator(UILog spiderLogging, SimulatorView simulatorView, PageModel pageModel)
+       public FootactionSimulator(UILogging spiderLogging, SimulatorView simulatorView, PageModel pageModel)
            : base(spiderLogging,simulatorView, pageModel)
        {
            

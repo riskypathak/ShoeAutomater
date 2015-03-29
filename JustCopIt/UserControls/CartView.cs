@@ -31,7 +31,7 @@ namespace JustCopIt.UserControls
 
         //public SiteType Type { get; set; }
 
-        public UILog SpiderLogging { get; set; }
+        public UILogging SpiderLogging { get; set; }
 
         private void StartShowCartView(string url)
         {

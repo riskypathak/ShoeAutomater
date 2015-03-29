@@ -8,7 +8,7 @@ namespace JustCopIt.Framework.Simulator
   public  class SimulatorFactory
    {
       
-      public static Simulator GetSimulator(UILog spiderLogging, SimulatorView simulatorView, PageModel pageModel)
+      public static Simulator GetSimulator(UILogging spiderLogging, SimulatorView simulatorView, PageModel pageModel)
       {
           switch (pageModel.Type)
           {
