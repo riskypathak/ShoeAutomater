@@ -34,6 +34,8 @@ namespace JustCopIt.Views
 
         public MainForm()
         {
+            Constants.IsReset = false;
+
             InitializeComponent();
             _uiLogging = new UILog(rtxtLog);
             _dictTabViewCart = new Dictionary<SiteType, TabPage>
@@ -617,6 +619,9 @@ namespace JustCopIt.Views
             if (result == DialogResult.OK)
             {
                 Reset();
+
+                Constants.IsReset = true;
+                this.Dispose();
             }
         }
 

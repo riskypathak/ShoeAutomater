@@ -35,6 +35,6 @@ namespace JustCopIt.Common
         public static int DefaultSimulatorTickTimes = 2;
         public static string DefaultSize = "08.0";
 
-
+        public static bool IsReset = false;
     }
 }

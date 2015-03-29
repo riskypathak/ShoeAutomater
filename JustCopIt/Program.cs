@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using JustCopIt.Framework.Browser;
 using JustCopIt.Views;
+using JustCopIt.Common;
 
 namespace JustCopIt
 {
@@ -13,10 +14,16 @@ namespace JustCopIt
         [STAThread]
         static void Main()
         {
+            Constants.IsReset = true;
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             BrowserEmulationHelper.SetBrowserEmulationMode(BrowserEmulationMode.IE_9);
-            Application.Run(new MainForm());
+
+            while (Constants.IsReset)
+            {
+                Application.Run(new MainForm());
+            }
         }
 
 
