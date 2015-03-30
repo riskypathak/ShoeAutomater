@@ -569,6 +569,8 @@ namespace JustCopIt.Views
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            this.TopMost = false;
+
             SetVersion();
             SetSizeSource();
             SetDefaultStatus();

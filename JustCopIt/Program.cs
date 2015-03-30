@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using JustCopIt.Framework.Browser;
 using JustCopIt.Views;
 using JustCopIt.Common;
+using System.Diagnostics;
 
 namespace JustCopIt
 {
@@ -14,15 +15,18 @@ namespace JustCopIt
         [STAThread]
         static void Main()
         {
-            Constants.IsReset = true;
-
+            Constants.IsReset = false;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             BrowserEmulationHelper.SetBrowserEmulationMode(BrowserEmulationMode.IE_9);
-
+            var mainForm = new MainForm { TopMost = true };
+            Application.Run(mainForm);
             while (Constants.IsReset)
             {
-                Application.Run(new MainForm());
+                Process.Start(Application.StartupPath + "\\JustCopIt.exe");
+
+                //close this one
+                Process.GetCurrentProcess().Kill();
             }
         }
 
