@@ -56,7 +56,7 @@ namespace JustCopIt.Framework.Simulator
                                if (ValidateSelectedSize(sizeEle))
                                {
                                    found = true;
-                                   DelayRemoveFocusSelectedSize(selectedEle, 1500);    
+                                   DelayRemoveFocusSelectedSize(selectedEle, 500);    
                                }
                                break;
                            }

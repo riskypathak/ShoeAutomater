@@ -71,7 +71,7 @@ namespace JustCopIt.UserControls
             // 
             // trackingTimer
             // 
-            this.trackingTimer.Interval = 3000;
+            this.trackingTimer.Interval = 2000;
             this.trackingTimer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
             // SimulatorView

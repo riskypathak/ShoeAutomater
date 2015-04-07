@@ -40,7 +40,7 @@ namespace JustCopIt.Framework.Simulator
                         {
                             if (ValidateSelectedSize(productSizesElement))
                             {
-                                DelayRemoveFocusSelectedSize(productSizesElement, 1500);
+                                DelayRemoveFocusSelectedSize(productSizesElement, 500);
                             }
                             else
                             {

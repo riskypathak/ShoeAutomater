@@ -31,7 +31,7 @@ namespace JustCopIt.Common
 
         public const string ApplicationTitle = @"JustCopIt 4 in 1 Bot";
 
-        public static int DefaultSimulatorWaitingTime = 3;
+        public static int DefaultSimulatorWaitingTime = 2;
         public static int DefaultSimulatorTickTimes = 2;
         public static string DefaultSize = "08.0";
 

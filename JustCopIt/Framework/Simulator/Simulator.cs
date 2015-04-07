@@ -72,7 +72,7 @@ namespace JustCopIt.Framework.Simulator
                StartSimulatorView(_url);
            };
            timer.Tick += checker;
-           timer.Interval = 3000;
+           timer.Interval = 500;
            timer.Start();
         }
        
@@ -229,7 +229,7 @@ namespace JustCopIt.Framework.Simulator
                _simulatorView.Finish();
            };
            timer.Tick += checker;
-           timer.Interval = 4000;
+           timer.Interval = 1000;
            timer.Start();
        }
 

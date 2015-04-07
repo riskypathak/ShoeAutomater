@@ -52,7 +52,7 @@ namespace JustCopIt.Framework.Simulator
                         {
                             if (ValidateSelectedSize(productSizesElement))
                             {
-                                DelayRemoveFocusSelectedSize(productSizesElement, 1500);    
+                                DelayRemoveFocusSelectedSize(productSizesElement, 500);    
                             }
                             else
                             {
@@ -118,7 +118,7 @@ namespace JustCopIt.Framework.Simulator
                             if (ValidateSelectedSize(sizeEle))
                             {
                                 found = true;
-                                DelayRemoveFocusSelectedSize(selectedEle, 1500);
+                                DelayRemoveFocusSelectedSize(selectedEle, 500);
                             }
                             break;
                         }

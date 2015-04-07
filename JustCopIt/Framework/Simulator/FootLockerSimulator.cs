@@ -51,7 +51,7 @@ namespace JustCopIt.Framework.Simulator
                                        found = true;
                                        productSizesElement.SetAttribute("value", _pageModel.SizeSetElement.Value);
                                        productSizesElement.RemoveFocus();
-                                       DelayRemoveFocusSelectedSize(productSizesElement, 1500);
+                                       DelayRemoveFocusSelectedSize(productSizesElement, 500);
                                    }
                                    break;
                                }
