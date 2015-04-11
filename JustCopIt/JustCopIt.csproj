@@ -105,6 +105,12 @@
     <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Excel">
+      <HintPath>..\..\..\freelancer\Ref\NPS Sms\NpsSms\bin\Debug\Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\..\freelancer\Ref\NPS Sms\NpsSms\bin\Debug\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -127,6 +133,7 @@
     <Compile Include="Framework\Browser\BrowserEmulationHelper.cs" />
     <Compile Include="Framework\Browser\Cookie.cs" />
     <Compile Include="Framework\Element\Element.cs" />
+    <Compile Include="Framework\Model\ShoppingLink.cs" />
     <Compile Include="Framework\Model\PageModel.cs" />
     <Compile Include="Framework\Simulator\ChampsSportsSimulator.cs" />
     <Compile Include="Framework\Simulator\EastbaySimulator.cs" />

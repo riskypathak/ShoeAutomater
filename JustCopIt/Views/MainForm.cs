@@ -1,11 +1,15 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using Excel;
 using JustCopIt.Common;
 using JustCopIt.Enumeration;
 using JustCopIt.Framework.Model;
@@ -219,6 +223,7 @@ namespace JustCopIt.Views
             //txtFootactionUrl.Text = MockData.FootactionUrl;
             //txtFootLockerUrl.Text = MockData.FootLockerUrl;
             //Test;
+            txtFileName.Text = string.Empty;
             txtChampUrl.Text = string.Empty;
             txtEastbayUrl.Text = string.Empty;
             txtFootactionUrl.Text = string.Empty;
@@ -260,7 +265,7 @@ namespace JustCopIt.Views
             // UpdateProgessBarValue(0);
             StartStopProgessBar(false);
 
-            txtChampUrl.Focus();
+            txtFileName.Focus();
             //invisible tab
             ShowHideMultiTabPages(false, tabChampsSports, tabEastbay, tabFootaction, tabFootLocker);
             SetTestUrl();
@@ -565,6 +570,112 @@ namespace JustCopIt.Views
         //}
         #endregion
 
+        #region import data
+
+        private List<ShoppingLink> ReadExcelFile()
+        {
+            try
+            {
+                var stream = File.Open(txtFileName.Text, FileMode.Open, FileAccess.Read);
+                var excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
+                excelReader.IsFirstRowAsColumnNames = true;
+                var dataSet = excelReader.AsDataSet();
+                var dt = dataSet.Tables[0];
+                if (dt == null || dt.Rows.Count <= 0) return null;
+
+                var lst = new List<ShoppingLink>();
+                for (var i = 0; i < dt.Rows.Count; i++)
+                {
+                    if (string.IsNullOrEmpty(DataUtil.StringForNull(dt.Rows[i][0]))) continue;
+                    var url = DataUtil.StringForNull(dt.Rows[i][0]).Trim();
+                    var size = DataUtil.StringForNull(dt.Rows[i][1]).Trim();
+                    if (string.IsNullOrEmpty(url)) continue;
+                    var item = new ShoppingLink { OrderNo = i, Url = url, Size = size };
+                    lst.Add(item);
+                }
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+
+        private  List<ShoppingLink> ReadTextFile()
+        {
+            try
+            {
+                var lines = FileHelper.GetDataFromFile(txtFileName.Text);
+                if (lines == null || lines.Count <= 0) return null;
+                var lst = new List<ShoppingLink>();
+                for (var i = 0; i < lines.Count-1; i = i + 2)
+                {
+                    if (string.IsNullOrEmpty(DataUtil.StringForNull(lines[i]))) continue;
+                    var url = DataUtil.StringForNull(lines[i]).Trim();
+                    var size = DataUtil.StringForNull(lines[i+1]).Trim();
+                    if (string.IsNullOrEmpty(url)) continue;
+                    var item = new ShoppingLink { OrderNo = i, Url = url, Size = size };
+                    lst.Add(item);
+                }
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+
+        private void SetShoppingLink(ShoppingLink link)
+        {
+            var sizes = SizeSource.Data;
+            if (string.IsNullOrEmpty(link.Url)) return;
+            var url = link.Url;
+            var importedSize = "03.5";
+            if (sizes.Contains(link.Size))
+            {
+                importedSize = link.Size;
+            }
+            else if (sizes.Contains(link.Size1))
+            {
+                importedSize = link.Size1;
+            }
+            else if (sizes.Contains(link.Size2))
+            {
+                importedSize = link.Size2;
+            }
+            else if (sizes.Contains(link.Size3))
+            {
+                importedSize = link.Size3;
+            }
+
+            if (url.StartsWith(MockData.ChampsSportsHost))
+            {
+                txtChampUrl.Text = url;
+                cboChampSize.SelectedIndex = sizes.IndexOf(importedSize);
+                return;
+            }
+            if (url.StartsWith(MockData.EastbayViewHost))
+            {
+                txtEastbayUrl.Text = url;
+                cboEastbaySize.SelectedIndex = sizes.IndexOf(importedSize);
+                return;
+            }
+            if (url.StartsWith(MockData.FootactioHost))
+            {
+                txtFootactionUrl.Text = url;
+                cboFootactionSize.SelectedIndex = sizes.IndexOf(importedSize);
+                return;
+            }
+            if (url.StartsWith(MockData.FootLockerHost))
+            {
+                txtFootLockerUrl.Text = url;
+                cboFootLockerSize.SelectedIndex = sizes.IndexOf(importedSize);
+            }
+        }
+        #endregion
+
         #region Events
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -589,6 +700,41 @@ namespace JustCopIt.Views
                 e.Cancel = true;
             }
         }
+
+        private void btnOpenFile_Click(object sender, EventArgs e)
+        {
+            var openFileDialog = new OpenFileDialog { Filter = @"All files (*.*)|*.*|Excel files (*.xlsx)|*.xlsx|Text files (*.txt)|*.txt" };
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                txtFileName.Text = openFileDialog.FileName;
+                btnReadFile_Click(this, null);
+            }
+        }
+
+        private void btnReadFile_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtFileName.Text))
+            {
+                MessageBox.Show(@"Please choose excel or text file.", Constants.ApplicationTitle);
+                return;
+            }
+            if (!File.Exists(txtFileName.Text.Trim()))
+            {
+                MessageBox.Show(@"File " + txtFileName.Text + @" is not existed.");
+                return;
+            }
+            List<ShoppingLink> shoppingLinks = txtFileName.Text.EndsWith(".txt") ? ReadTextFile() : ReadExcelFile();
+            if (shoppingLinks == null || shoppingLinks.Count == 0)
+            {
+                MessageBox.Show(@"There is not any valid url", Constants.ApplicationTitle);
+                return;
+            }
+            foreach (var shoppingLink in shoppingLinks)
+            {
+                SetShoppingLink(shoppingLink);
+            }
+        }
+
 
         private void TextBox_TextChanged(object sender, EventArgs e)
         {
@@ -777,7 +923,7 @@ namespace JustCopIt.Views
 
         #endregion
 
-
+       
 
     }
 }
