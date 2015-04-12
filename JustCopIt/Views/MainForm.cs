@@ -223,7 +223,6 @@ namespace JustCopIt.Views
             //txtFootactionUrl.Text = MockData.FootactionUrl;
             //txtFootLockerUrl.Text = MockData.FootLockerUrl;
             //Test;
-            txtFileName.Text = string.Empty;
             txtChampUrl.Text = string.Empty;
             txtEastbayUrl.Text = string.Empty;
             txtFootactionUrl.Text = string.Empty;
@@ -265,7 +264,6 @@ namespace JustCopIt.Views
             // UpdateProgessBarValue(0);
             StartStopProgessBar(false);
 
-            txtFileName.Focus();
             //invisible tab
             ShowHideMultiTabPages(false, tabChampsSports, tabEastbay, tabFootaction, tabFootLocker);
             SetTestUrl();
@@ -572,11 +570,11 @@ namespace JustCopIt.Views
 
         #region import data
 
-        private List<ShoppingLink> ReadExcelFile()
+        private List<ShoppingLink> ReadExcelFile(string filePath)
         {
             try
             {
-                var stream = File.Open(txtFileName.Text, FileMode.Open, FileAccess.Read);
+                var stream = File.Open(filePath, FileMode.Open, FileAccess.Read);
                 var excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
                 excelReader.IsFirstRowAsColumnNames = true;
                 var dataSet = excelReader.AsDataSet();
@@ -602,11 +600,11 @@ namespace JustCopIt.Views
             }
         }
 
-        private  List<ShoppingLink> ReadTextFile()
+        private  List<ShoppingLink> ReadTextFile(string filePath)
         {
             try
             {
-                var lines = FileHelper.GetDataFromFile(txtFileName.Text);
+                var lines = FileHelper.GetDataFromFile(filePath);
                 if (lines == null || lines.Count <= 0) return null;
                 var lst = new List<ShoppingLink>();
                 for (var i = 0; i < lines.Count-1; i = i + 2)
@@ -701,38 +699,36 @@ namespace JustCopIt.Views
             }
         }
 
-        private void btnOpenFile_Click(object sender, EventArgs e)
-        {
-            var openFileDialog = new OpenFileDialog { Filter = @"All files (*.*)|*.*|Excel files (*.xlsx)|*.xlsx|Text files (*.txt)|*.txt" };
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                txtFileName.Text = openFileDialog.FileName;
-                btnReadFile_Click(this, null);
-            }
-        }
+
 
         private void btnReadFile_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtFileName.Text))
-            {
-                MessageBox.Show(@"Please choose excel or text file.", Constants.ApplicationTitle);
-                return;
-            }
-            if (!File.Exists(txtFileName.Text.Trim()))
-            {
-                MessageBox.Show(@"File " + txtFileName.Text + @" is not existed.");
-                return;
-            }
-            List<ShoppingLink> shoppingLinks = txtFileName.Text.EndsWith(".txt") ? ReadTextFile() : ReadExcelFile();
-            if (shoppingLinks == null || shoppingLinks.Count == 0)
-            {
-                MessageBox.Show(@"There is not any valid url", Constants.ApplicationTitle);
-                return;
-            }
-            foreach (var shoppingLink in shoppingLinks)
-            {
-                SetShoppingLink(shoppingLink);
-            }
+                var openFileDialog = new OpenFileDialog { Filter = @"All files (*.*)|*.*|Excel files (*.xlsx)|*.xlsx|Text files (*.txt)|*.txt" };
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+
+                    if (string.IsNullOrEmpty(filePath))
+                    {
+                        MessageBox.Show(@"Please choose excel or text file.", Constants.ApplicationTitle);
+                        return;
+                    }
+                    if (!File.Exists(filePath.Trim()))
+                    {
+                        MessageBox.Show(@"File " + filePath + @" is not existed.");
+                        return;
+                    }
+                    List<ShoppingLink> shoppingLinks = filePath.EndsWith(".txt") ? ReadTextFile(filePath) : ReadExcelFile(filePath);
+                    if (shoppingLinks == null || shoppingLinks.Count == 0)
+                    {
+                        MessageBox.Show(@"There is not any valid url", Constants.ApplicationTitle);
+                        return;
+                    }
+                    foreach (var shoppingLink in shoppingLinks)
+                    {
+                        SetShoppingLink(shoppingLink);
+                    }
+                }
         }
 
 

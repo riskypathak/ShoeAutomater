@@ -43,8 +43,6 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnReadFile = new System.Windows.Forms.Button();
-            this.btnOpenFile = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnFootLockerViewCart = new System.Windows.Forms.Button();
             this.btnFootactionViewCart = new System.Windows.Forms.Button();
             this.btnEastbayViewCart = new System.Windows.Forms.Button();
@@ -56,7 +54,6 @@
             this.txtFootLockerUrl = new System.Windows.Forms.TextBox();
             this.txtFootactionUrl = new System.Windows.Forms.TextBox();
             this.txtEastbayUrl = new System.Windows.Forms.TextBox();
-            this.txtFileName = new System.Windows.Forms.TextBox();
             this.txtChampUrl = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -162,6 +159,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.btnReadFile);
             this.panel3.Controls.Add(this.btnClearLog);
             this.panel3.Controls.Add(this.btnStop);
             this.panel3.Controls.Add(this.btnExit);
@@ -175,7 +173,7 @@
             // btnClearLog
             // 
             this.btnClearLog.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnClearLog.Location = new System.Drawing.Point(415, 8);
+            this.btnClearLog.Location = new System.Drawing.Point(385, 8);
             this.btnClearLog.Name = "btnClearLog";
             this.btnClearLog.Size = new System.Drawing.Size(80, 23);
             this.btnClearLog.TabIndex = 2;
@@ -186,7 +184,7 @@
             // btnStop
             // 
             this.btnStop.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnStop.Location = new System.Drawing.Point(315, 8);
+            this.btnStop.Location = new System.Drawing.Point(292, 8);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(80, 23);
             this.btnStop.TabIndex = 1;
@@ -197,7 +195,7 @@
             // btnExit
             // 
             this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnExit.Location = new System.Drawing.Point(515, 8);
+            this.btnExit.Location = new System.Drawing.Point(571, 8);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(80, 23);
             this.btnExit.TabIndex = 3;
@@ -208,7 +206,7 @@
             // btnStart
             // 
             this.btnStart.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnStart.Location = new System.Drawing.Point(215, 8);
+            this.btnStart.Location = new System.Drawing.Point(199, 8);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(80, 23);
             this.btnStart.TabIndex = 0;
@@ -218,9 +216,6 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.btnReadFile);
-            this.panel2.Controls.Add(this.btnOpenFile);
-            this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.btnFootLockerViewCart);
             this.panel2.Controls.Add(this.btnFootactionViewCart);
             this.panel2.Controls.Add(this.btnEastbayViewCart);
@@ -232,7 +227,6 @@
             this.panel2.Controls.Add(this.txtFootLockerUrl);
             this.panel2.Controls.Add(this.txtFootactionUrl);
             this.panel2.Controls.Add(this.txtEastbayUrl);
-            this.panel2.Controls.Add(this.txtFileName);
             this.panel2.Controls.Add(this.txtChampUrl);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
@@ -251,40 +245,19 @@
             // btnReadFile
             // 
             this.btnReadFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReadFile.Location = new System.Drawing.Point(570, 10);
+            this.btnReadFile.Location = new System.Drawing.Point(478, 8);
             this.btnReadFile.Name = "btnReadFile";
             this.btnReadFile.Size = new System.Drawing.Size(80, 23);
             this.btnReadFile.TabIndex = 14;
-            this.btnReadFile.Text = "Read file";
+            this.btnReadFile.Text = "Import";
             this.btnReadFile.UseVisualStyleBackColor = true;
             this.btnReadFile.Click += new System.EventHandler(this.btnReadFile_Click);
-            // 
-            // btnOpenFile
-            // 
-            this.btnOpenFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOpenFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOpenFile.Location = new System.Drawing.Point(534, 10);
-            this.btnOpenFile.Name = "btnOpenFile";
-            this.btnOpenFile.Size = new System.Drawing.Size(32, 23);
-            this.btnOpenFile.TabIndex = 13;
-            this.btnOpenFile.Text = "...";
-            this.btnOpenFile.UseVisualStyleBackColor = true;
-            this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 13);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Choose file:";
             // 
             // btnFootLockerViewCart
             // 
             this.btnFootLockerViewCart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFootLockerViewCart.Enabled = false;
-            this.btnFootLockerViewCart.Location = new System.Drawing.Point(783, 138);
+            this.btnFootLockerViewCart.Location = new System.Drawing.Point(783, 121);
             this.btnFootLockerViewCart.Name = "btnFootLockerViewCart";
             this.btnFootLockerViewCart.Size = new System.Drawing.Size(80, 23);
             this.btnFootLockerViewCart.TabIndex = 11;
@@ -296,7 +269,7 @@
             // 
             this.btnFootactionViewCart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFootactionViewCart.Enabled = false;
-            this.btnFootactionViewCart.Location = new System.Drawing.Point(783, 106);
+            this.btnFootactionViewCart.Location = new System.Drawing.Point(783, 89);
             this.btnFootactionViewCart.Name = "btnFootactionViewCart";
             this.btnFootactionViewCart.Size = new System.Drawing.Size(80, 23);
             this.btnFootactionViewCart.TabIndex = 8;
@@ -308,7 +281,7 @@
             // 
             this.btnEastbayViewCart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEastbayViewCart.Enabled = false;
-            this.btnEastbayViewCart.Location = new System.Drawing.Point(783, 74);
+            this.btnEastbayViewCart.Location = new System.Drawing.Point(783, 57);
             this.btnEastbayViewCart.Name = "btnEastbayViewCart";
             this.btnEastbayViewCart.Size = new System.Drawing.Size(80, 23);
             this.btnEastbayViewCart.TabIndex = 5;
@@ -320,7 +293,7 @@
             // 
             this.btnChampViewCart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnChampViewCart.Enabled = false;
-            this.btnChampViewCart.Location = new System.Drawing.Point(783, 42);
+            this.btnChampViewCart.Location = new System.Drawing.Point(783, 25);
             this.btnChampViewCart.Name = "btnChampViewCart";
             this.btnChampViewCart.Size = new System.Drawing.Size(80, 23);
             this.btnChampViewCart.TabIndex = 2;
@@ -332,7 +305,7 @@
             // 
             this.cboFootLockerSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cboFootLockerSize.FormattingEnabled = true;
-            this.cboFootLockerSize.Location = new System.Drawing.Point(704, 138);
+            this.cboFootLockerSize.Location = new System.Drawing.Point(704, 121);
             this.cboFootLockerSize.Name = "cboFootLockerSize";
             this.cboFootLockerSize.Size = new System.Drawing.Size(60, 21);
             this.cboFootLockerSize.TabIndex = 10;
@@ -341,7 +314,7 @@
             // 
             this.cboFootactionSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cboFootactionSize.FormattingEnabled = true;
-            this.cboFootactionSize.Location = new System.Drawing.Point(704, 106);
+            this.cboFootactionSize.Location = new System.Drawing.Point(704, 89);
             this.cboFootactionSize.Name = "cboFootactionSize";
             this.cboFootactionSize.Size = new System.Drawing.Size(60, 21);
             this.cboFootactionSize.TabIndex = 7;
@@ -350,7 +323,7 @@
             // 
             this.cboEastbaySize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cboEastbaySize.FormattingEnabled = true;
-            this.cboEastbaySize.Location = new System.Drawing.Point(704, 74);
+            this.cboEastbaySize.Location = new System.Drawing.Point(704, 57);
             this.cboEastbaySize.Name = "cboEastbaySize";
             this.cboEastbaySize.Size = new System.Drawing.Size(60, 21);
             this.cboEastbaySize.TabIndex = 4;
@@ -359,7 +332,7 @@
             // 
             this.cboChampSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cboChampSize.FormattingEnabled = true;
-            this.cboChampSize.Location = new System.Drawing.Point(704, 42);
+            this.cboChampSize.Location = new System.Drawing.Point(704, 25);
             this.cboChampSize.Name = "cboChampSize";
             this.cboChampSize.Size = new System.Drawing.Size(60, 21);
             this.cboChampSize.TabIndex = 1;
@@ -368,7 +341,7 @@
             // 
             this.txtFootLockerUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFootLockerUrl.Location = new System.Drawing.Point(120, 138);
+            this.txtFootLockerUrl.Location = new System.Drawing.Point(120, 121);
             this.txtFootLockerUrl.Name = "txtFootLockerUrl";
             this.txtFootLockerUrl.Size = new System.Drawing.Size(530, 20);
             this.txtFootLockerUrl.TabIndex = 9;
@@ -378,7 +351,7 @@
             // 
             this.txtFootactionUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFootactionUrl.Location = new System.Drawing.Point(120, 106);
+            this.txtFootactionUrl.Location = new System.Drawing.Point(120, 89);
             this.txtFootactionUrl.Name = "txtFootactionUrl";
             this.txtFootactionUrl.Size = new System.Drawing.Size(530, 20);
             this.txtFootactionUrl.TabIndex = 6;
@@ -388,27 +361,17 @@
             // 
             this.txtEastbayUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtEastbayUrl.Location = new System.Drawing.Point(120, 74);
+            this.txtEastbayUrl.Location = new System.Drawing.Point(120, 57);
             this.txtEastbayUrl.Name = "txtEastbayUrl";
             this.txtEastbayUrl.Size = new System.Drawing.Size(530, 20);
             this.txtEastbayUrl.TabIndex = 3;
             this.txtEastbayUrl.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
-            // txtFileName
-            // 
-            this.txtFileName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFileName.Location = new System.Drawing.Point(120, 12);
-            this.txtFileName.Name = "txtFileName";
-            this.txtFileName.Size = new System.Drawing.Size(408, 20);
-            this.txtFileName.TabIndex = 0;
-            this.txtFileName.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
-            // 
             // txtChampUrl
             // 
             this.txtChampUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtChampUrl.Location = new System.Drawing.Point(120, 42);
+            this.txtChampUrl.Location = new System.Drawing.Point(120, 25);
             this.txtChampUrl.Name = "txtChampUrl";
             this.txtChampUrl.Size = new System.Drawing.Size(530, 20);
             this.txtChampUrl.TabIndex = 0;
@@ -417,7 +380,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 142);
+            this.label5.Location = new System.Drawing.Point(16, 125);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 13);
             this.label5.TabIndex = 0;
@@ -426,7 +389,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 110);
+            this.label4.Location = new System.Drawing.Point(16, 93);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 13);
             this.label4.TabIndex = 0;
@@ -435,7 +398,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 78);
+            this.label3.Location = new System.Drawing.Point(16, 61);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 0;
@@ -445,7 +408,7 @@
             // 
             this.lblFootLocker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFootLocker.AutoSize = true;
-            this.lblFootLocker.Location = new System.Drawing.Point(668, 142);
+            this.lblFootLocker.Location = new System.Drawing.Point(668, 125);
             this.lblFootLocker.Name = "lblFootLocker";
             this.lblFootLocker.Size = new System.Drawing.Size(25, 13);
             this.lblFootLocker.TabIndex = 0;
@@ -455,7 +418,7 @@
             // 
             this.lblFootaction.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFootaction.AutoSize = true;
-            this.lblFootaction.Location = new System.Drawing.Point(668, 110);
+            this.lblFootaction.Location = new System.Drawing.Point(668, 93);
             this.lblFootaction.Name = "lblFootaction";
             this.lblFootaction.Size = new System.Drawing.Size(25, 13);
             this.lblFootaction.TabIndex = 0;
@@ -465,7 +428,7 @@
             // 
             this.lblEastbay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblEastbay.AutoSize = true;
-            this.lblEastbay.Location = new System.Drawing.Point(668, 78);
+            this.lblEastbay.Location = new System.Drawing.Point(668, 61);
             this.lblEastbay.Name = "lblEastbay";
             this.lblEastbay.Size = new System.Drawing.Size(25, 13);
             this.lblEastbay.TabIndex = 0;
@@ -475,7 +438,7 @@
             // 
             this.lblChamp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblChamp.AutoSize = true;
-            this.lblChamp.Location = new System.Drawing.Point(668, 46);
+            this.lblChamp.Location = new System.Drawing.Point(668, 29);
             this.lblChamp.Name = "lblChamp";
             this.lblChamp.Size = new System.Drawing.Size(25, 13);
             this.lblChamp.TabIndex = 0;
@@ -484,7 +447,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 46);
+            this.label2.Location = new System.Drawing.Point(16, 29);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(78, 13);
             this.label2.TabIndex = 0;
@@ -698,9 +661,6 @@
         private System.Windows.Forms.RichTextBox rtxtLog;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Button btnReadFile;
-        private System.Windows.Forms.Button btnOpenFile;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtFileName;
     }
 }
 
