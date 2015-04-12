@@ -245,6 +245,7 @@ namespace JustCopIt.Views
         {
             btnStart.Enabled = true;
             btnStop.Enabled = false;
+            btnReadFile.Enabled = true;
 
             btnChampViewCart.Enabled = false;
             btnEastbayViewCart.Enabled = false;
@@ -344,9 +345,10 @@ namespace JustCopIt.Views
 
                 return;
             }
-
+            
             btnStart.Enabled = false;
             btnStop.Enabled = true;
+            btnReadFile.Enabled = false;
             txtChampUrl.BackColor = DefaultBackColor;
             txtEastbayUrl.BackColor = DefaultBackColor;
             txtFootactionUrl.BackColor = DefaultBackColor;
@@ -517,6 +519,7 @@ namespace JustCopIt.Views
             }
             btnStop.Enabled = false;
             btnStart.Enabled = true;
+            btnReadFile.Enabled = true;
         }
 
         private void ClearLog()
@@ -698,15 +701,13 @@ namespace JustCopIt.Views
                 e.Cancel = true;
             }
         }
-
-
-
+        
         private void btnReadFile_Click(object sender, EventArgs e)
         {
                 var openFileDialog = new OpenFileDialog { Filter = @"All files (*.*)|*.*|Excel files (*.xlsx)|*.xlsx|Text files (*.txt)|*.txt" };
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    string filePath = openFileDialog.FileName;
+                    var filePath = openFileDialog.FileName;
 
                     if (string.IsNullOrEmpty(filePath))
                     {
@@ -718,7 +719,7 @@ namespace JustCopIt.Views
                         MessageBox.Show(@"File " + filePath + @" is not existed.");
                         return;
                     }
-                    List<ShoppingLink> shoppingLinks = filePath.EndsWith(".txt") ? ReadTextFile(filePath) : ReadExcelFile(filePath);
+                    var shoppingLinks = filePath.EndsWith(".txt") ? ReadTextFile(filePath) : ReadExcelFile(filePath);
                     if (shoppingLinks == null || shoppingLinks.Count == 0)
                     {
                         MessageBox.Show(@"There is not any valid url", Constants.ApplicationTitle);
@@ -817,6 +818,7 @@ namespace JustCopIt.Views
             {
                 btnStart.Enabled = true;
                 btnStop.Enabled = false;
+                btnReadFile.Enabled = true;
                 //UpdateProgessBarValue(100);
                 StartStopProgessBar(false);
             }

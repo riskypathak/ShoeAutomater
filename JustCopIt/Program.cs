@@ -15,6 +15,8 @@ namespace JustCopIt
         [STAThread]
         static void Main()
         {
+            var appName = System.Reflection.Assembly.GetEntryAssembly().GetName().Name;
+            var currentProcessFilePath = Application.StartupPath + string.Format(@"\{0}.exe", appName);
             Constants.IsReset = false;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -23,9 +25,7 @@ namespace JustCopIt
             Application.Run(mainForm);
             while (Constants.IsReset)
             {
-                Process.Start(Application.StartupPath + "\\JustCopIt.exe");
-
-                //close this one
+                Process.Start(currentProcessFilePath);
                 Process.GetCurrentProcess().Kill();
             }
         }
