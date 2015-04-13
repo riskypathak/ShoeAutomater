@@ -203,6 +203,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Recources\back.png" />
+    <Content Include="Recources\forward.png" />
+    <Content Include="Recources\refresh.png" />
     <None Include="Recources\banner.png" />
     <None Include="Recources\logo.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

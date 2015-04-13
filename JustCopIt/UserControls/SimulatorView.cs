@@ -159,9 +159,29 @@ namespace JustCopIt.UserControls
 
         }
 
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            if (webSimulatorMainTab.CanGoBack)
+            {
+                webSimulatorMainTab.GoBack();
+            }
+        }
+
+        private void btnForward_Click(object sender, EventArgs e)
+        {
+            if (webSimulatorMainTab.CanGoForward)
+            {
+                webSimulatorMainTab.GoForward();
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            webSimulatorMainTab.Refresh();
+        }
+
         #endregion
 
-       
        
 
     }
